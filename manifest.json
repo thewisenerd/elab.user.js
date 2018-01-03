@@ -1,0 +1,30 @@
+{
+	"manifest_version": 2,
+
+	"name": "eLab",
+	"description": "make eLab bearable",
+	"version": "0.0.1",
+
+	"browser_action": {
+		"default_icon": "resources/1f984.png"
+	},
+	"permissions": [
+		"tabs", "http://care.srmuniv.ac.in/*"
+	],
+	"content_scripts": [
+		{
+			"matches": ["http://care.srmuniv.ac.in/*"],
+			"js": [
+				"resources/browser-polyfill.min.js",
+				"scripts/esdk.js",
+				"scripts/elab.common.js",
+				"scripts/injector.js"
+			]
+		}
+	],
+	"web_accessible_resources": [
+		"resources/*",
+		"css/*",
+		"scripts/*"
+	]
+}
