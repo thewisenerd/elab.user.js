@@ -12,25 +12,7 @@ window.esdk.styling.code = function() {
 };
 window.esdk.style(window.esdk.styling.code);
 
-/* backup? */
 window.esdk.bind(function() {
-	console.log("...");
-
-	/* don't fuck with cut copy paste */
-	$('body').off('cut copy paste');
-
-	/* don't fuck with right-click */
-	$('body').off('contextmenu');
-}, 600);
-
-window.esdk.bind(function() {
-	console.log("...");
-
-	/* don't fuck with cut copy paste */
-	$('body').off('cut copy paste');
-
-	/* don't fuck with right-click */
-	$('body').off('contextmenu');
 
 	window.CM = document.querySelector('#codeEditor .CodeMirror').CodeMirror;
 	CM.setOption('indentWithTabs', true);
@@ -54,7 +36,5 @@ window.esdk.bind(function() {
 	console.log("set mode to: " + CM.getOption('mode'));
 
 	CM.setOption('extraKeys', null);
-	// CM.setOption('keyMap', '');
-	
 
-}, 300);
+}, 50);

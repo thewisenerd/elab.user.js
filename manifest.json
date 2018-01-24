@@ -9,6 +9,8 @@
 		"default_icon": "resources/1f984.png"
 	},
 	"permissions": [
+		"webRequest",
+		"webRequestBlocking",
 		"tabs", "http://care.srmuniv.ac.in/*"
 	],
 	"content_scripts": [
@@ -22,6 +24,13 @@
 			]
 		}
 	],
+	"background": {
+		"scripts": [
+			"resources/browser-polyfill.min.js",
+			"scripts/persistent.js"
+		],
+		"persistent": true
+	},
 	"web_accessible_resources": [
 		"resources/*",
 		"css/*",
