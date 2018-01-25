@@ -81,3 +81,21 @@ nav > .nav-wrapper > a.brand-logo img {
 	border-bottom: 1px solid #000;
 	box-shadow: 0 1px 0 0 #000;
 }
+
+/* testcases */
+/* kang from hackerrank */
+pre.testcasemd {
+	display: block;
+	margin: 0 0 9px;
+	padding: 0;
+	font-size: 14px;
+	line-height: 18px;
+	word-break: break-all;
+	word-wrap: break-word;
+	white-space: pre;
+	white-space: pre-wrap;
+	color: #454c59;
+	background: #fff;
+	padding: 20px;
+	border: 1px solid #C2C7D0;
+}

@@ -25,18 +25,17 @@ window.esdk.styling.code = function() {
 	if (flexibleLabs.indexOf(lab) != -1) {
 		console.log("flexilab");
 
-		$("#selectInput").detach().appendTo('.main_div > .row > .col.question_div');
-
+		var $s = $("#selectInput").detach();
 		var existing = [];
 
-		$("#selectInput option").each(function(i, e) {
+		$s.find("option").each(function(i, e) {
 			existing.push( $(e).val() );
 		});
 
 		SupportedLanguages.forEach(function(lang) {
 			if ( existing.indexOf(lang) == -1 ) {
 
-				$('#selectInput').append($('<option>', {
+				$s.append($('<option>', {
 					value: lang,
 					text: lang.toUpperCase() + ' language'
 				}));
@@ -44,7 +43,9 @@ window.esdk.styling.code = function() {
 			}
 		});
 
-		$("#selectInput").material_select();
+		$('.main_div > .row > .col.question_div').append( $('<div class="input-field" />').append( $s ) );
+
+		$s.material_select();
 	} // flexibleLabs
 
 	$('body > .container').remove();
@@ -56,7 +57,6 @@ window.esdk.styling.code = function() {
 		$( this ).addClass('l12');
 	});
 
-	var $q = $('.main_div > .row > .col')[0];
 };
 window.esdk.style(window.esdk.styling.code);
 
@@ -84,5 +84,18 @@ window.esdk.bind(function() {
 	console.log("set mode to: " + CM.getOption('mode'));
 
 	CM.setOption('extraKeys', null);
+
+	var $q = $('.main_div > .row > .col.question_div > .card > ul.collection > li');
+	var $testcases = [ $q[3], $q[4] ]; // TODO: do index-offset based searching here
+
+	$testcases.forEach(function(el) {
+		$(el).find("pre").each(function(idx, pre) {
+			var str = $(pre).html();
+			var regex_nlbr = /<br\s*[\/]?>/gi;
+			var regex_mark = /<[\/]?mark>/gi;
+			$(pre).html(str.replace(regex_nlbr, "").replace(regex_mark, ""));
+			$(pre).addClass('testcasemd');
+		});
+	});
 
 }, 50);
