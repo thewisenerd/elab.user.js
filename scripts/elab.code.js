@@ -1,4 +1,52 @@
 window.esdk.styling.code = function() {
+
+	var match = esdk.regex.code.exec(window.location.href);
+	var lab = match[1];
+
+	var SupportedLanguages = [
+		'c',
+		'cpp',
+		// 'csharp',
+		// 'haskell',
+		'java',
+		// 'matlab',
+		// 'perl',
+		'python',
+		// 'r',
+		// 'ruby',
+	];
+
+	var flexibleLabs = [
+		'daa',
+		'data-structure',
+		'operating-systems',
+	];
+
+	if (flexibleLabs.indexOf(lab) != -1) {
+		console.log("flexilab");
+
+		$("#selectInput").detach().appendTo('.main_div > .row > .col.question_div');
+
+		var existing = [];
+
+		$("#selectInput option").each(function(i, e) {
+			existing.push( $(e).val() );
+		});
+
+		SupportedLanguages.forEach(function(lang) {
+			if ( existing.indexOf(lang) == -1 ) {
+
+				$('#selectInput').append($('<option>', {
+					value: lang,
+					text: lang.toUpperCase() + ' language'
+				}));
+
+			}
+		});
+
+		$("#selectInput").material_select();
+	} // flexibleLabs
+
 	$('body > .container').remove();
 
 	$('body > .main_div').addClass('container');
