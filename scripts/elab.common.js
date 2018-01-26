@@ -57,8 +57,13 @@ window.esdk.styling.common = function() {
 		var url_l = nu.origin + nu.pathname + '?id=' + id + '&value=' + lu.toString();
 		var url_r = nu.origin + nu.pathname + '?id=' + id + '&value=' + ru.toString();
 
+		var match = esdk.regex.lab.exec(u);
+		var lab = match[1];
+		var t_U = new URL(u)
+		var lab_q_url = t_U.origin + '/' + lab + '/' + 'login/student/question.php';
+
 		t = t + '<li><a style="width: 100%" class="left" href="' + url_l + '" title="Previous Question"><i class="material-icons left">keyboard_arrow_left</i><span class="hide-on-large-only"><span></a></li>'
-		t = t + '<li><a style="width: 100%" class="left" href="http://care.srmuniv.ac.in/computingskill/login/student/question.php" title="Question Index"><i class="material-icons left">format_list_bulleted</i><span class="hide-on-large-only"><span></a></li>'
+		t = t + '<li><a style="width: 100%" class="left" href="' + lab_q_url + '" title="Question Index"><i class="material-icons left">format_list_bulleted</i><span class="hide-on-large-only"><span></a></li>'
 		t = t + '<li><a style="width: 100%" class="left" href="' + url_r + '" title="Next Question"><i class="material-icons left">keyboard_arrow_right</i><span class="hide-on-large-only"><span></a></li>'
 
 		// merge q links
